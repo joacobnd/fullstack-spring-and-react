@@ -36,5 +36,6 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
-  }
+  },
+  "proxy": "http://localhost:8080"  //Debemos agregar el proxy para que el backend perfmita al frontend
 }
