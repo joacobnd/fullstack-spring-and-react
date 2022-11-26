@@ -10,4 +10,6 @@ const checkStatus = response => {
     return Promise.reject(error);
 }
 
-export const getAllStudents = () => fetch("api/v1/students").then(checkStatus);
+export const getAllStudents = () =>
+    fetch("api/v1/students")
+        .then(checkStatus);

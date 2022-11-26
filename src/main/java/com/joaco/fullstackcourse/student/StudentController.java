@@ -13,16 +13,15 @@ public class StudentController {
 
     @GetMapping
     public List<Student> getAllStudents() {
-        List<Student> students = Arrays.asList(new Student(
+        return Arrays.asList(new Student(
                 1L,
-                "Joaquin",
-                "joaco@gmail.com",
+                "Apu",
+                "apppuu@qweasd.com",
                 Gender.MALE),
                 new Student(
                         1L,
                         "Jamila",
                         "jamila@gmail.com",
                         Gender.FEMALE));
-        return students;
     }
 }
