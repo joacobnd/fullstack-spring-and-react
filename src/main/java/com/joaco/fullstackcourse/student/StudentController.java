@@ -15,14 +15,15 @@ public class StudentController {
     public List<Student> getAllStudents() {
         return Arrays.asList(
                 new Student(
-                1L,
-                "Apu",
-                "apppuu@qweasd.com",
-                Gender.MALE),
+                        1L,
+                        "Apu",
+                        "apppuu@qweasd.com",
+                        Gender.MALE),
                 new Student(
                         2L,
                         "Jamila",
                         "jamila@gmail.com",
-                        Gender.FEMALE));
+                        Gender.FEMALE)
+        );
     }
 }
