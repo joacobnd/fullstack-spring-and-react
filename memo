@@ -1,2 +1,10 @@
 docker and jib:
 build image to dockerhub
+
+
+DB
+
+docker network create db  //Crear base de datos
+docker network rm db //BOrrar base de datos
+
+docker run -it --rm --network=db postgres:alpine psql -h db -U postgres //conectar a la db
