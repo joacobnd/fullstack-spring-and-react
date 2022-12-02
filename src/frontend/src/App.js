@@ -1,6 +1,6 @@
 import {useState, useEffect} from 'react'
 import {getAllStudents} from "./client";
-import {Layout, Menu, Breadcrumb, Table, Spin, Empty, Button, Badge, Tag} from 'antd';
+import {Layout, Menu, Breadcrumb, Table, Spin, Empty, Button, Badge, Tag, Avatar} from 'antd';
 import {
     DesktopOutlined,
     PieChartOutlined,
@@ -17,7 +17,27 @@ import './App.css';
 const {Header, Content, Footer, Sider} = Layout;
 const {SubMenu} = Menu;
 
+const TheAvatar = ({name}) => {
+    let trim = name.trim();
+    if (trim.length === 0) {
+        return <Avatar icon={<UserOutlined/>}/>
+    }
+    const split = trim.split(" ");
+    if (split.length === 1) {
+        return <Avatar>{name.charAt(0).toUpperCase()}</Avatar>
+    }
+    return <Avatar>{`${name.charAt(0).toUpperCase()}${name.charAt((name.length)-1).toUpperCase()}`}</Avatar>
+
+}
+
+
 const columns = [
+    {
+        title: '',
+        dataIndex: 'avatar',
+        key: 'avatar',
+        render: (text, student) => <TheAvatar name={student.name}/>
+    },
     {
         title: 'Id',
         dataIndex: 'id',
@@ -84,7 +104,7 @@ function App() {
                            <Badge count={students.length} color={"#404040"}/>
                            <br/><br/>
                            <Button onClick={() => setShowDrawer(!showDrawer)} type="primary" shape="round"
-                                   icon={<PlusCircleOutlined/>} size="medium">  Add New Student
+                                   icon={<PlusCircleOutlined/>} size="medium"> Add New Student
                            </Button>
                        </>
                    }
