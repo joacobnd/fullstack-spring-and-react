@@ -1,6 +1,6 @@
 import {useState, useEffect} from 'react'
 import {getAllStudents} from "./client";
-import {Layout, Menu, Breadcrumb, Table, Spin, Empty, Button} from 'antd';
+import {Layout, Menu, Breadcrumb, Table, Spin, Empty, Button, Badge, Tag} from 'antd';
 import {
     DesktopOutlined,
     PieChartOutlined,
@@ -78,8 +78,16 @@ function App() {
             <Table dataSource={students}
                    columns={columns}
                    bordered
-                   title={() => <Button onClick={() => setShowDrawer(!showDrawer)} type="primary" shape="round"
-                                        icon={<PlusCircleOutlined/>} size="medium"> Add New Student </Button>}
+                   title={() =>
+                       <>
+                           <Tag color={"#404040"}>Numbers of students</Tag>
+                           <Badge count={students.length} color={"#404040"}/>
+                           <br/><br/>
+                           <Button onClick={() => setShowDrawer(!showDrawer)} type="primary" shape="round"
+                                   icon={<PlusCircleOutlined/>} size="medium">  Add New Student
+                           </Button>
+                       </>
+                   }
                    pagination={{pageSize: 50}} scroll={{y: 240}}
                    rowKey={(student) => student.id}
                    scroll={{y: 600}}
