@@ -2,9 +2,10 @@ docker and jib:
 build image to dockerhub
 DB: conecting to DB
 
+React:
+npm start
 
 DB
-
 docker network create db  //Crear base de datos
 docker network rm db //BOrrar base de datos
 
