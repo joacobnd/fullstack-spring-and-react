@@ -1,19 +1,30 @@
-import {Drawer, Input, Col, Select, Form, Row, Button} from 'antd';
+import {Drawer, Input, Col, Select, Form, Row, Button, Spin} from 'antd';
 import {addNewStudent} from "./client";
+import {LoadingOutlined} from "@ant-design/icons";
+import {useState} from "react";
 
 const {Option} = Select;
 
+const antIcon = <LoadingOutlined style={{ fontSize: 24 }} spin />;
 
-function StudentDrawerForm({showDrawer, setShowDrawer}) {
+
+function StudentDrawerForm({fetchStudents, showDrawer, setShowDrawer}) {
     const onCLose = () => setShowDrawer(false);
+    const [submitting, setSubmitting] = useState(false);
+
 
     const onFinish = student => {
+        setSubmitting(true);
         console.log(JSON.stringify(student, null, 2));
         addNewStudent(student).then(() => {
             console.log("student added")
+            onCLose();    //Cierra el menu desplegable al darle Submit sin ningun error
+            fetchStudents(); //Al cerrar el menu desplegable actualiza la tabla con la nueva informacion agregada
         }).catch(err => {
             console.log(err)
-        });
+        }).finally(() => {
+            setSubmitting(false);
+        })
 
     };
 
@@ -86,6 +97,9 @@ function StudentDrawerForm({showDrawer, setShowDrawer}) {
                         </Button>
                     </Form.Item>
                 </Col>
+            </Row>
+            <Row>
+                {submitting && <Spin indicator={antIcon} />}
             </Row>
         </Form>
     </Drawer>;
