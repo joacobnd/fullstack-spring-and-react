@@ -1,5 +1,6 @@
 docker and jib:
 build image to dockerhub
+DB: conecting to DB
 
 
 DB
