@@ -2,6 +2,7 @@ import {Drawer, Input, Col, Select, Form, Row, Button, Spin} from 'antd';
 import {addNewStudent} from "./client";
 import {LoadingOutlined} from "@ant-design/icons";
 import {useState} from "react";
+import {successNotification, errorNotification} from "./Notification";
 
 const {Option} = Select;
 
@@ -19,6 +20,7 @@ function StudentDrawerForm({fetchStudents, showDrawer, setShowDrawer}) {
         addNewStudent(student).then(() => {
             console.log("student added")
             onCLose();    //Cierra el menu desplegable al darle Submit sin ningun error
+            successNotification("Student successfully added", `${student.name} was added to the system`)
             fetchStudents(); //Al cerrar el menu desplegable actualiza la tabla con la nueva informacion agregada
         }).catch(err => {
             console.log(err)
