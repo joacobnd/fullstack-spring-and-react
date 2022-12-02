@@ -1,13 +1,14 @@
 import {useState, useEffect} from 'react'
 import {getAllStudents} from "./client";
-import {Layout, Menu, Breadcrumb, Table, Spin, Empty} from 'antd';
+import {Layout, Menu, Breadcrumb, Table, Spin, Empty, Button} from 'antd';
 import {
     DesktopOutlined,
     PieChartOutlined,
     FileOutlined,
     TeamOutlined,
     UserOutlined,
-    LoadingOutlined
+    LoadingOutlined,
+    PlusCircleOutlined
 } from '@ant-design/icons';
 
 import './App.css';
@@ -69,7 +70,7 @@ function App() {
         return <Table dataSource={students}
                       columns={columns}
                       bordered
-                      title={() => 'Students'}
+                      title={() => <Button type="primary" shape="round" icon={<PlusCircleOutlined />} size="medium"> Add New Student </Button>}
                       pagination={{pageSize: 50}} scroll={{y: 240}}
                       rowKey={(student) => student.id}
                       scroll={{y: 600}}
