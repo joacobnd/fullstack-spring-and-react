@@ -28,6 +28,8 @@ public class Student {
     @Enumerated(EnumType.STRING)
     private Gender gender;
 
+    private String action;
+
     public Student(String name, String email, Gender gender) {
         this.name = name;
         this.email = email;

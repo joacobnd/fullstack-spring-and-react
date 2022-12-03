@@ -77,7 +77,7 @@ function StudentDrawerForm({fetchStudents, showDrawer, setShowDrawer}) {
                 <Col span={12}>
                     <Form.Item
                         name="gender"
-                        label="gender"
+                        label="Gender"
                         rules={[{required: true, message: 'Please select a gender'}]}
                     >
                         <Select placeholder="Please select a gender">

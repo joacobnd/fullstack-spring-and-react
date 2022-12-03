@@ -21,4 +21,9 @@ public class StudentService {
         studentRepository.save(student);
 
     }
+
+    public void deleteStudent(Long studentId) {
+        //TODO check if student exist
+        studentRepository.deleteById(studentId);
+    }
 }
