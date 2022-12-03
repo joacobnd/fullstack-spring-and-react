@@ -6,7 +6,7 @@ import {successNotification, errorNotification} from "./Notification";
 
 const {Option} = Select;
 
-const antIcon = <LoadingOutlined style={{ fontSize: 24 }} spin />;
+const antIcon = <LoadingOutlined style={{fontSize: 24}} spin/>;
 
 
 function StudentDrawerForm({fetchStudents, showDrawer, setShowDrawer}) {
@@ -15,19 +15,30 @@ function StudentDrawerForm({fetchStudents, showDrawer, setShowDrawer}) {
 
 
     const onFinish = student => {
-        setSubmitting(true);
-        console.log(JSON.stringify(student, null, 2));
-        addNewStudent(student).then(() => {
-            console.log("student added")
-            onCLose();    //Cierra el menu desplegable al darle Submit sin ningun error
-            successNotification("Student successfully added", `${student.name} was added to the system`)
-            fetchStudents(); //Al cerrar el menu desplegable actualiza la tabla con la nueva informacion agregada
-        }).catch(err => {
+        setSubmitting(true)
+        console.log(JSON.stringify(student, null, 2))
+        addNewStudent(student)
+            .then(() => {
+                console.log("student added")
+                onCLose();
+                successNotification(
+                    "Student successfully added",
+                    `${student.name} was added to the system`
+                )
+                fetchStudents();
+            }).catch(err => {
             console.log(err)
+            err.response.json().then(res => {
+                console.log(res)
+                errorNotification(
+                    "There was an issue",
+                    `${res.message} [${res.status}] [${res.error}]`,
+                    "bottomLeft"
+                )
+            })
         }).finally(() => {
-            setSubmitting(false);
+            setSubmitting(false)
         })
-
     };
 
     const onFinishFailed = errorInfo => {
@@ -101,7 +112,7 @@ function StudentDrawerForm({fetchStudents, showDrawer, setShowDrawer}) {
                 </Col>
             </Row>
             <Row>
-                {submitting && <Spin indicator={antIcon} />}
+                {submitting && <Spin indicator={antIcon}/>}
             </Row>
         </Form>
     </Drawer>;
