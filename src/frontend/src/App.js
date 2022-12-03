@@ -13,7 +13,7 @@ import {
 import StudentDrawerForm from "./StudentDrawerForm";
 
 import './App.css';
-import {successNotification} from "./Notification";
+import {errorNotification, successNotification} from "./Notification";
 
 const {Header, Content, Footer, Sider} = Layout;
 const {SubMenu} = Menu;
@@ -79,6 +79,7 @@ const columns = fetchStudents => [
                     <Radio.Button value="smail">Delete</Radio.Button>
                 </Popconfirm>
                 <Popconfirm
+                    title={`Are you sure to edit ${student.name}`}
                     placement='topRight'
                     okText='Yes'
                     cancelText='No'>
@@ -106,8 +107,13 @@ function App() {
             .then(data => {
                 console.log(data);
                 setStudents(data);
-                setFetching(false);
-            })
+            }).catch(err => {
+            console.log(err.response);
+            err.response.json().then(res => {
+                console.log(res);
+                errorNotification("There was an issue", `${res.message} [${res.status}] [${res.error}]`)
+            });
+        }).finally(() => setFetching(false));
 
     useEffect(() => {
         console.log("component is mounted");
@@ -142,7 +148,6 @@ function App() {
                    }
                    pagination={{pageSize: 50}} scroll={{y: 240}}
                    rowKey={(student) => student.id}
-                   scroll={{y: 600}}
             />
 
         </>
