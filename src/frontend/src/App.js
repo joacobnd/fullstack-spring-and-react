@@ -98,9 +98,6 @@ const columns = fetchStudents => [
 ];
 
 
-
-
-
 const antIcon = <LoadingOutlined style={{fontSize: 24}} spin/>;
 
 function App() {
@@ -133,7 +130,18 @@ function App() {
             return <Spin indicator={antIcon}/>;
         }
         if (students.length <= 0) {
-            return <Empty/>;
+            return <>
+                <Button onClick={() => setShowDrawer(!showDrawer)} type="primary" shape="round"
+                        icon={<PlusCircleOutlined/>} size="medium"> Add New Student
+                </Button>
+                <StudentDrawerForm
+                    showDrawer={showDrawer}
+                    setShowDrawer={setShowDrawer}
+                    fetchStudents={fetchStudents}
+                />
+
+                <Empty/>
+            </>
         }
         return <>
             <StudentDrawerForm
@@ -154,7 +162,7 @@ function App() {
                            </Button>
                        </>
                    }
-                   pagination={{pageSize: 50}} scroll={{y: 240}}
+                   pagination={{pageSize: 50}} scroll={{y: 500}}
                    rowKey={(student) => student.id}
             />
 
@@ -187,11 +195,13 @@ function App() {
             </Menu>
         </Sider>
         <Layout className="site-layout">
-            <Header className="site-layout-background" style={{padding: 0}}/>
+            <Header className="site-layout-background" style={{padding: 5}}/>
             <Content style={{margin: '0 16px'}}>
-                <Breadcrumb style={{margin: '16px 0'}}>
-                    <Breadcrumb.Item>User</Breadcrumb.Item>
-                    <Breadcrumb.Item>Bill</Breadcrumb.Item>
+                <Breadcrumb style={{margin: '10px 0'}}>
+                    {/*<br/><br/>*/}
+                    {/*<Button onClick={() => setShowDrawer(!showDrawer)} type="primary" shape="round"*/}
+                    {/*        icon={<PlusCircleOutlined/>} size="medium"> Add New Student*/}
+                    {/*</Button>*/}
                 </Breadcrumb>
                 <div className="site-layout-background" style={{padding: 24, minHeight: 360}}>
                     {renderStudents()}

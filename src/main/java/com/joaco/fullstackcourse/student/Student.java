@@ -27,14 +27,15 @@ public class Student {
     )
     private Long id;
     @NotBlank
+    @Column(nullable = false)
     private String name;
     @Email(regexp = "^(.+)@(.+)$")
+    @Column(nullable = false, unique = true)
     private String email;
     @Enumerated(EnumType.STRING)
     @NotNull
+    @Column(nullable = false)
     private Gender gender;
-
-    private String action;
 
     public Student(String name, String email, Gender gender) {
         this.name = name;
