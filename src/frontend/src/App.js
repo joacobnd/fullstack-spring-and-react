@@ -1,6 +1,20 @@
 import {useState, useEffect} from 'react'
 import {getAllStudents, deleteStudent} from "./client";
-import {Layout, Menu, Breadcrumb, Table, Spin, Empty, Button, Badge, Tag, Avatar, Popconfirm, Radio} from 'antd';
+import {
+    Layout,
+    Menu,
+    Breadcrumb,
+    Table,
+    Spin,
+    Empty,
+    Button,
+    Badge,
+    Tag,
+    Avatar,
+    Popconfirm,
+    Radio,
+    Divider
+} from 'antd';
 import {
     DesktopOutlined,
     PieChartOutlined,
