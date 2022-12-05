@@ -207,7 +207,7 @@ function App() {
                     {renderStudents()}
                 </div>
             </Content>
-            <Footer style={{textAlign: 'center'}}>Joaquin N. Grandiccelli Design @2022</Footer>
+            <Footer style={{textAlign: 'center'}}>Joaquin N. Grandiccelli @2022</Footer>
         </Layout>
     </Layout>
 }
