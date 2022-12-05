@@ -5,8 +5,13 @@ DB: conecting to DB
 React:
 npm start
 
+push to dockerhub
+mvn clean install jib:build -Djib.to.image=joacobnd/spring-reack-fullstack:v1
+spring-reack-fullstack
+
 DB
 docker network create db  //Crear base de datos
 docker network rm db //BOrrar base de datos
 
 docker run -it --rm --network=db postgres:alpine psql -h db -U postgres //conectar a la db
+docker run -it --rm postgres:alpine psql -h awseb-e-usg79nek9w-stack-awsebrdsdatabase-ttcfl1gk5mnv.cmluonstymem.eu-west-3.rds.amazonaws.com -U joacobnd -d postgres //conectar a la db de aws
