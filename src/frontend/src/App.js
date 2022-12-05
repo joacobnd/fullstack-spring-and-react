@@ -223,7 +223,7 @@ function App() {
             </Content>
             <Footer style={{textAlign: 'center'}}>Joaquin N. Grandiccelli @2022</Footer>
             <Divider>
-                <a rel="noopener noreferrer" target="_blank" href="https://amigoscode.com/courses/enrolled/553022">Last project from SpringBoot & React Fullstack by Amigoscode</a>
+                <a rel="noopener noreferrer" target="_blank" href="https://amigoscode.com/courses/enrolled/553022">Last project from SpringBoot & React Fullstack Course by Amigoscode</a>
             </Divider>
         </Layout>
     </Layout>
