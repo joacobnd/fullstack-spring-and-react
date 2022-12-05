@@ -1,6 +1,20 @@
 import {useState, useEffect} from 'react'
 import {getAllStudents, deleteStudent} from "./client";
-import {Layout, Menu, Breadcrumb, Table, Spin, Empty, Button, Badge, Tag, Avatar, Popconfirm, Radio} from 'antd';
+import {
+    Layout,
+    Menu,
+    Breadcrumb,
+    Table,
+    Spin,
+    Empty,
+    Button,
+    Badge,
+    Tag,
+    Avatar,
+    Popconfirm,
+    Radio,
+    Divider
+} from 'antd';
 import {
     DesktopOutlined,
     PieChartOutlined,
@@ -208,6 +222,9 @@ function App() {
                 </div>
             </Content>
             <Footer style={{textAlign: 'center'}}>Joaquin N. Grandiccelli @2022</Footer>
+            <Divider>
+                <a rel="noopener noreferrer" target="_blank" href="https://amigoscode.com/">Project from SpringBoot & React Fullstack by Amigoscode</a>
+            </Divider>
         </Layout>
     </Layout>
 }
