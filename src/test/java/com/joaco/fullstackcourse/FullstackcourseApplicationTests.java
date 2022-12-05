@@ -9,7 +9,7 @@ class FullstackcourseApplicationTests {
 
 	@Test
 	void contextLoads() {
-		Assertions.fail("Opps test failed");
+//		Assertions.fail("Opps test failed");
 	}
 
 }
